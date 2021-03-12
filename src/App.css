@@ -1,7 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+body {
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #222222;
+}
 .App {
   text-align: center;
 }
 
+h1 {
+  font-size: 60px;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+}
+.error {
+  border: 2px solid red;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+.submit-btn {
+  color: #fff;
+  background-color: #585858;
+}
+.history-btn {
+  color: #fff;
+  background-color: #f25f25;
+}
+
+ol {
+  margin: 0px 0;
+  padding: 0;
+  list-style: decimal-leading-zero inside none;
+}
+
+ol li {
+  margin: 0px;
+  padding: 0px;
+  text-indent: -2.2em;
+  margin-left: 3.4em;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,21 +55,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +62,157 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/*** Modal ***/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1040;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  z-index: 100;
+  background: #fff;
+  position: relative;
+  margin: auto;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 80%;
+  padding: 1rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-close-button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.history-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.history-table td,
+.history-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.history-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.history-table tr:hover {
+  background-color: #ddd;
+}
+
+.history-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f25f25;
+  color: white;
+}
+
+/* magic ball */
+.ball-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.eight-ball {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vh;
+  height: 50vh;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 120%,
+    #323232,
+    #0a0a0a 80%,
+    #000000 100%
+  );
+}
+.inner-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  background-color: #2b2b2b;
+  box-shadow: 0px 0px 33px 9px #585858;
+}
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0px;
+  height: 0px;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 70px solid #25b8f2;
+}
+
+.triangle {
+  min-width: 105px;
+  margin: -100px 0 0px -5px;
+}
+
+.up {
+  width: 0vh;
+  height: 0vh;
+  border-style: inset;
+  border-width: 0px 55px 100.2px 55px;
+  border-color: transparent transparent #007bff transparent;
+  float: left;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.up div {
+  text-align: center;
+  top: 0px;
+  left: -35px;
+  position: relative;
+  width: 70px;
+  height: 90px;
+  margin: 0px;
+  transform: rotate(180deg);
+  font-size: 16px;
+  font-size: 1.5vh;
 }
