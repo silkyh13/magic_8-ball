@@ -26,10 +26,22 @@ p {
 .submit-btn {
   color: #fff;
   background-color: #585858;
+  border-radius: 5px;
+  border-color: #585858;
+}
+.submit-btn:hover {
+  background-color: #f25f25;
+  border-color: #f25f25;
 }
 .history-btn {
   color: #fff;
   background-color: #f25f25;
+  border-radius: 5px;
+  border-color: #f25f25;
+}
+.history-btn:hover {
+  background-color: #585858;
+  border-color: #585858;
 }
 
 ol {
@@ -153,9 +165,11 @@ ol li {
 .eight-ball {
   display: flex;
   justify-content: center;
+  min-height: 359px;
+  min-width: 359px;
   align-items: center;
-  width: 50vh;
-  height: 50vh;
+  width: calc(14vh * 3);
+  height: calc(14vh * 3);
   border-radius: 50%;
   background: radial-gradient(
     circle at 50% 120%,
@@ -164,6 +178,23 @@ ol li {
     #000000 100%
   );
 }
+
+.spin {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .inner-circle {
   display: flex;
   justify-content: center;
@@ -174,20 +205,15 @@ ol li {
   background-color: #2b2b2b;
   box-shadow: 0px 0px 33px 9px #585858;
 }
-.message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 0px;
-  height: 0px;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-top: 70px solid #25b8f2;
-}
-
-.triangle {
-  min-width: 105px;
-  margin: -100px 0 0px -5px;
+@media (max-width: 320px) {
+  .eight-ball {
+    width: 30vh;
+    height: 30vh;
+  }
+  .inner-circle {
+    width: 15vh;
+    height: 15vh;
+  }
 }
 
 .up {

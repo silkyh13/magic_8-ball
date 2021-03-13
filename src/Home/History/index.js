@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const HistoryModal = ({ isShowing, hide }) => {
   const [history, setHistory] = useState([]);
+  //retrieve history from local storage
   useEffect(() => {
     if (window.localStorage.getItem("history")) {
       let history = window.localStorage.getItem("history").split(",,,");
@@ -42,6 +43,14 @@ const HistoryModal = ({ isShowing, hide }) => {
                   );
                 })}
               </table>
+              <button
+                onClick={() => {
+                  window.localStorage.setItem("history", "");
+                  setHistory([]);
+                }}
+              >
+                Clear history
+              </button>
             </div>
           </div>
         </div>

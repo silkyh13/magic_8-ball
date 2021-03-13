@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const QueryResult = ({ results }) => {
+const QueryResult = ({ results, pending }) => {
   return (
     <div className="App">
       <div className="ball-container">
         <div className="eight-ball">
           <div className="inner-circle">
-            <div class="up">
+            <div className={`up ${pending ? "spin" : ""}`}>
               <div>{results}</div>
             </div>
           </div>

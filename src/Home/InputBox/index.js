@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const InputBox = ({ setResults }) => {
+const InputBox = ({ setResults, setPending }) => {
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
+  //checks to see if the query is a question
   function checkQuery() {
     if (query.slice(-1) === "?") {
       console.log("its true");
@@ -15,8 +16,10 @@ const InputBox = ({ setResults }) => {
       return false;
     }
   }
+  //checks to see if the history has more than 10 queries
   function checkIfMoreThan10(results, history) {
     let temp = results.split(",,,");
+    //history contains more than 10, delete first one
     if (temp.length > 10) {
       //remove first one
       temp.shift();
@@ -24,21 +27,30 @@ const InputBox = ({ setResults }) => {
     temp = temp.join(",,,");
     window.localStorage.setItem("history", `${temp}${history}`);
   }
+  //submits the question to the magic 8-ball
   const handleSubmit = (e) => {
     e.preventDefault();
     let result = checkQuery();
     if (result) {
+      //spinner starts spinning
+      setPending(true);
       let uri = "https://8ball.delegator.com/magic/JSON/" + query;
       fetch(uri)
         .then((response) => response.json())
         .then((json) => {
-          setResults(json.magic.answer);
-          setQuery("");
+          //extra spinner spinning time
+          setTimeout(() => {
+            setPending(false);
+            setResults(json.magic.answer);
+            setQuery("");
+          }, Math.random() * 2000);
           let currentResult = `${query}:${json.magic.answer},,,`;
+          //if local storage has some results
           if (window.localStorage.getItem("history")) {
             let prevResults = window.localStorage.getItem("history");
             checkIfMoreThan10(prevResults, currentResult);
           } else {
+            //add a key in local storage to store the history of queries
             window.localStorage.setItem("history", `${currentResult}`);
           }
         });
